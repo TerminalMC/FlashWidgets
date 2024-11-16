@@ -25,10 +25,6 @@ subprojects {
             owner_name = mod_owner
             year = java.time.LocalDate.now().getYear().toString()
         }
-        // Dual-licensing
-        matching(includes: ["**/MixinMinecraft.java", "**/MixinTitleScreen.java"]) {
-            header = rootProject.file("LICENSE_HEADER_MPL-2.0")
-        }
     }
 
     // Publishing

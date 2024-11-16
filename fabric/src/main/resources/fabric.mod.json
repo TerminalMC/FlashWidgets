@@ -31,7 +31,8 @@
     "java": [$java_versions_fabric_list],
     "minecraft": [$minecraft_versions_fabric_list],
     "fabricloader": [$fabric_loader_versions_list],
-    "fabric-api": [$fabric_api_versions_list]
+    "fabric-api": [$fabric_api_versions_list],
+    "flashback": [$flashback_versions_fabric_list]
   },
 
   "recommends": {

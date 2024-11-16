@@ -1,0 +1,37 @@
+{
+  "flashside.name": "Flashside",
+
+  "modmenu.descriptionTranslation.flashside": "${mod_description}",
+  "fml.menu.mods.info.description.flashside": "${mod_description}",
+
+  "message.flashside.viewModrinth": "View on Modrinth",
+  "message.flashside.installCloth": "Install Cloth Config API to access mod options",
+  
+  "option.flashside.mc": "Minecraft",
+  "option.flashside.mc.secondRowKeys": "Second row keys",
+  "option.flashside.mc.secondRowKeys.tooltip": "Translation keys to identify the right-most button in the second row of buttons on the pause screen.",
+  "option.flashside.mc.thirdRowKeys": "Third row keys",
+  "option.flashside.mc.thirdRowKeys.tooltip": "Translation keys to identify the right-most button in the third row of buttons on the pause screen.",
+  "option.flashside.mc.fourthRowKeys": "Fourth row keys",
+  "option.flashside.mc.fourthRowKeys.tooltip": "Translation keys to identify the right-most button in the fourth row of buttons on the pause screen.",
+  "option.flashside.mc.secondRowStrings": "Second row strings",
+  "option.flashside.mc.secondRowStrings.tooltip": "Text strings to identify the right-most button in the second row of buttons on the pause screen.",
+  "option.flashside.mc.thirdRowStrings": "Third row strings",
+  "option.flashside.mc.thirdRowStrings.tooltip": "Text strings to identify the right-most button in the third row of buttons on the pause screen.",
+  "option.flashside.mc.fourthRowStrings": "Fourth row strings",
+  "option.flashside.mc.fourthRowStrings.tooltip": "Text strings to identify the right-most button in the fourth row of buttons on the pause screen.",
+  
+  "option.flashside.fb": "Flashback",
+  "option.flashside.fb.firstButtonKeys": "First button keys",
+  "option.flashside.fb.firstButtonKeys.tooltip": "Translation keys to identify the Flashback button to be placed first on the pause screen.",
+  "option.flashside.fb.secondButtonKeys": "Second button keys",
+  "option.flashside.fb.secondButtonKeys.tooltip": "Translation keys to identify the Flashback button to be placed second on the pause screen.",
+  "option.flashside.fb.thirdButtonKeys": "Third button keys",
+  "option.flashside.fb.thirdButtonKeys.tooltip": "Translation keys to identify the Flashback button to be placed third on the pause screen.",
+  "option.flashside.fb.firstButtonStrings": "First button strings",
+  "option.flashside.fb.firstButtonStrings.tooltip": "Text strings to identify the Flashback button to be placed first on the pause screen.",
+  "option.flashside.fb.secondButtonStrings": "Second button strings",
+  "option.flashside.fb.secondButtonStrings.tooltip": "Text strings to identify the Flashback button to be placed second on the pause screen.",
+  "option.flashside.fb.thirdButtonStrings": "Third button strings",
+  "option.flashside.fb.thirdButtonStrings.tooltip": "Text strings to identify the Flashback button to be placed third on the pause screen."
+}
