@@ -26,7 +26,7 @@ Because I kept accidentally hitting "Start Recording" when trying to leave serve
 
 - You can use the Cloth Config options UI to customize how Flashside detects the game menu buttons. This may be useful
 if you have other mods that make changes on the pause screen.
-- Open to improvements on the overlay textures.
+- If you find that Flashside conflicts with another mod, please report it on Discord or GitHub.
 
 <table style="width:100%;">
   <tr>
