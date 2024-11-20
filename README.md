@@ -39,12 +39,11 @@ if you have other mods that make changes on the pause screen.
 
 Fabric: [Flashback](https://modrinth.com/mod/4das1Fjq), [Fabric API](https://modrinth.com/mod/P7dR8mSH), [ModMenu](https://modrinth.com/mod/mOgUt4GM), [Cloth Config API](https://modrinth.com/mod/9s6osm5g)
 
-### License
-
-[Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-
 ### Contact
 
 [![Discord Server](https://img.shields.io/discord/1103153365216669797?logo=discord&label=Discord%20Server&color=%235865F2)](https://discord.terminalmc.dev)
 
 [![GitHub Issues](https://img.shields.io/github/issues/TerminalMC/Flashside?logo=github&label=GitHub%20Issues)](https://github.com/TerminalMC/Flashside/issues)
+
+[![License](https://img.shields.io/github/license/TerminalMC/Flashside?label=License&logo=github&logoColor=white)](https://github.com/TerminalMC/Flashside/blob/HEAD/LICENSE.txt)
+
