@@ -58,7 +58,8 @@ public class Config {
 
         public static final List<String> fourthRowKeysDefault = List.of(
                 "menu.playerReporting",
-                "menu.shareToLan"
+                "menu.shareToLan",
+                "world-host.open_world"
         );
         public List<String> fourthRowKeys = fourthRowKeysDefault;
 
