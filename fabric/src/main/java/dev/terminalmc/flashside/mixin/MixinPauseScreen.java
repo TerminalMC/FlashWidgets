@@ -72,7 +72,7 @@ public class MixinPauseScreen extends Screen {
             
             boolean remove = false;
             if (element instanceof Button button) {
-                Config.Options options = Config.get().options;
+                Config.Options options = Config.options();
                 if (button.getMessage().getContents() instanceof TranslatableContents contents) {
                     if (options.secondRowKeys.contains(contents.getKey())) {
                         mcb1 = button;
