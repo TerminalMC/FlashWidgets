@@ -73,20 +73,27 @@ public class MixinPauseScreen extends Screen {
             boolean remove = false;
             if (element instanceof Button button) {
                 Config.Options options = Config.options();
+                String text = button.getMessage().getString();
                 if (button.getMessage().getContents() instanceof TranslatableContents contents) {
-                    if (options.secondRowKeys.contains(contents.getKey())) {
+                    if (options.secondRowKeys.contains(contents.getKey())
+                            || options.secondRowStrings.contains(text)) {
                         mcb1 = button;
-                    } else if (options.thirdRowKeys.contains(contents.getKey())) {
+                    } else if (options.thirdRowKeys.contains(contents.getKey())
+                            || options.thirdRowStrings.contains(text)) {
                         mcb2 = button;
-                    } else if (options.fourthRowKeys.contains(contents.getKey())) {
+                    } else if (options.fourthRowKeys.contains(contents.getKey())
+                            || options.fourthRowStrings.contains(text)) {
                         mcb3 = button;
-                    } else if (mcb1 != null && options.firstButtonKeys.contains(contents.getKey())) {
+                    } else if (mcb1 != null && (options.firstButtonKeys.contains(contents.getKey())
+                            || options.firstButtonStrings.contains(text))) {
                         this.addRenderableWidget(getFlashsideButton(button, mcb1));
                         remove = true;
-                    } else if (mcb2 != null && options.secondButtonKeys.contains(contents.getKey())) {
+                    } else if (mcb2 != null && (options.secondButtonKeys.contains(contents.getKey())
+                            || options.secondButtonStrings.contains(text))) {
                         this.addRenderableWidget(getFlashsideButton(button, mcb2));
                         remove = true;
-                    } else if (mcb3 != null && options.thirdButtonKeys.contains(contents.getKey())) {
+                    } else if (mcb3 != null && (options.thirdButtonKeys.contains(contents.getKey())
+                            || options.thirdButtonStrings.contains(text))) {
                         this.addRenderableWidget(getFlashsideButton(button, mcb3));
                         remove = true;
                     }
