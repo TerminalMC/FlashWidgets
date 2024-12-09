@@ -20,6 +20,7 @@ import com.mojang.datafixers.util.Pair;
 import com.moulberry.flashback.screen.FlashbackButton;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Tooltip;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
@@ -51,6 +52,6 @@ public class FlashsideButton extends FlashbackButton {
         int x = this.getX() + paddingX;
         int y = this.getY() + paddingY;
 
-        graphics.blit(overlay, x, y, 0f, 0f, size, size, size, size);
+        graphics.blit(RenderType::guiTextured, overlay, x, y, 0f, 0f, size, size, size, size);
     }
 }
