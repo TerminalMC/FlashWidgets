@@ -24,8 +24,8 @@ Because I kept accidentally hitting "Start Recording" when trying to leave serve
 
 ### About
 
-- You can use the Cloth Config options UI to customize how Flashside detects the game menu buttons. This may be useful
-if you have other mods that make changes on the pause screen.
+- Flashside automatically detects the first (top-most) button on the pause screen, and uses that as a reference for
+placing the Flashback buttons. You can configure which row the buttons start at via the Cloth Config options UI.
 - If you find that Flashside conflicts with another mod, please report it on Discord or GitHub.
 
 <table style="width:100%;">
@@ -46,4 +46,3 @@ Fabric: [Flashback](https://modrinth.com/mod/4das1Fjq), [Fabric API](https://mod
 [![GitHub Issues](https://img.shields.io/github/issues/TerminalMC/Flashside?logo=github&label=GitHub%20Issues)](https://github.com/TerminalMC/Flashside/issues)
 
 [![License](https://img.shields.io/github/license/TerminalMC/Flashside?label=License&logo=github&logoColor=white)](https://github.com/TerminalMC/Flashside/blob/HEAD/LICENSE.txt)
-
