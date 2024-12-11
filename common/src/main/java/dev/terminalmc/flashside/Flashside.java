@@ -18,18 +18,33 @@ package dev.terminalmc.flashside;
 
 import dev.terminalmc.flashside.config.Config;
 import dev.terminalmc.flashside.util.ModLogger;
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.components.Button;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class Flashside {
     public static final String MOD_ID = "flashside";
     public static final String MOD_NAME = "Flashside";
     public static final ModLogger LOG = new ModLogger(MOD_NAME);
+    
+    public static final String startString = "Start Recording";
+    public static final String finishString = "Finish Recording";
+    public static final String pauseString = "Pause Recording";
+    public static final String unpauseString = "Unpause Recording";
+    public static final String cancelString = "Cancel Recording";
+    
+    public static final List<String> firstStrings = List.of(startString, finishString);
+    public static final List<String> secondStrings = List.of(pauseString, unpauseString);
+    public static final List<String> thirdStrings = List.of(cancelString);
+    
+    public static @Nullable Button fbButton1 = null;
+    public static @Nullable Button fbButton2 = null;
+    public static @Nullable Button fbButton3 = null;
+    public static @Nullable Button mmButton = null;
 
     public static void init() {
         Config.getAndSave();
-    }
-
-    public static void onEndTick(Minecraft mc) {
     }
 
     public static void onConfigSaved(Config instance) {

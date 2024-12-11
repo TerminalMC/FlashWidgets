@@ -27,7 +27,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-import java.util.List;
 
 public class Config {
     private static final Path DIR_PATH = Path.of("config");
@@ -44,59 +43,11 @@ public class Config {
     }
 
     public static class Options {
-        public static final List<String> secondRowKeysDefault = List.of(
-                "gui.stats"
-        );
-        public List<String> secondRowKeys = secondRowKeysDefault;
+        public static final int startRowDefault = 1;
+        public int startRow = startRowDefault;
 
-        public static final List<String> thirdRowKeysDefault = List.of(
-                "menu.reportBugs",
-                "menu.server_links",
-                "modmenu.title"
-        );
-        public List<String> thirdRowKeys = thirdRowKeysDefault;
-
-        public static final List<String> fourthRowKeysDefault = List.of(
-                "menu.playerReporting",
-                "menu.shareToLan",
-                "world-host.open_world"
-        );
-        public List<String> fourthRowKeys = fourthRowKeysDefault;
-
-        public static final List<String> secondRowStringsDefault = List.of();
-        public List<String> secondRowStrings = secondRowStringsDefault;
-
-        public static final List<String> thirdRowStringsDefault = List.of();
-        public List<String> thirdRowStrings = thirdRowStringsDefault;
-
-        public static final List<String> fourthRowStringsDefault = List.of();
-        public List<String> fourthRowStrings = fourthRowStringsDefault;
-
-        public static final List<String> firstButtonKeysDefault = List.of();
-        public List<String> firstButtonKeys = firstButtonKeysDefault;
-
-        public static final List<String> secondButtonKeysDefault = List.of();
-        public List<String> secondButtonKeys = secondButtonKeysDefault;
-
-        public static final List<String> thirdButtonKeysDefault = List.of();
-        public List<String> thirdButtonKeys = thirdButtonKeysDefault;
-
-        public static final List<String> firstButtonStringsDefault = List.of(
-                "Start Recording",
-                "Finish Recording"
-        );
-        public List<String> firstButtonStrings = firstButtonStringsDefault;
-
-        public static final List<String> secondButtonStringsDefault = List.of(
-                "Pause Recording",
-                "Unpause Recording"
-        );
-        public List<String> secondButtonStrings = secondButtonStringsDefault;
-
-        public static final List<String> thirdButtonStringsDefault = List.of(
-                "Cancel Recording"
-        );
-        public List<String> thirdButtonStrings = thirdButtonStringsDefault;
+        public static final boolean modmenuIconTopDefault = false;
+        public boolean modmenuIconTop = modmenuIconTopDefault;
     }
 
     // Instance management

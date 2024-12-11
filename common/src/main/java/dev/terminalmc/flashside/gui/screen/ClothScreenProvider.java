@@ -40,115 +40,20 @@ public class ClothScreenProvider {
         ConfigEntryBuilder eb = builder.entryBuilder();
         
         ConfigCategory mc = builder.getOrCreateCategory(localized("option", "mc"));
-        
-        mc.addEntry(eb.startStrList(
-                localized("option", "mc.secondRowKeys"), options.secondRowKeys)
-                .setTooltip(localized("option", "mc.secondRowKeys.tooltip"))
-                .setDefaultValue(Config.Options.secondRowKeysDefault)
-                .setSaveConsumer(val -> options.secondRowKeys = val)
-                .setInsertInFront(false)
-                .setExpanded(true)
+
+        mc.addEntry(eb.startIntSlider(
+                localized("option", "mc.startRow"), options.startRow, 0, 4)
+                .setTooltip(localized("option", "mc.startRow.tooltip"))
+                .setDefaultValue(Config.Options.startRowDefault)
+                .setSaveConsumer(val -> options.startRow = val)
+                .setTextGetter(val -> localized("option", "mc.startRow.value", val)) // op
                 .build());
 
-        mc.addEntry(eb.startStrList(
-                        localized("option", "mc.thirdRowKeys"), options.thirdRowKeys)
-                .setTooltip(localized("option", "mc.thirdRowKeys.tooltip"))
-                .setDefaultValue(Config.Options.thirdRowKeysDefault)
-                .setSaveConsumer(val -> options.thirdRowKeys = val)
-                .setInsertInFront(false)
-                .setExpanded(true)
-                .build());
-
-        mc.addEntry(eb.startStrList(
-                        localized("option", "mc.fourthRowKeys"), options.fourthRowKeys)
-                .setTooltip(localized("option", "mc.fourthRowKeys.tooltip"))
-                .setDefaultValue(Config.Options.fourthRowKeysDefault)
-                .setSaveConsumer(val -> options.fourthRowKeys = val)
-                .setInsertInFront(false)
-                .setExpanded(true)
-                .build());
-
-        mc.addEntry(eb.startStrList(
-                        localized("option", "mc.secondRowStrings"), options.secondRowStrings)
-                .setTooltip(localized("option", "mc.secondRowStrings.tooltip"))
-                .setDefaultValue(Config.Options.secondRowStringsDefault)
-                .setSaveConsumer(val -> options.secondRowStrings = val)
-                .setInsertInFront(false)
-                .setExpanded(true)
-                .build());
-
-        mc.addEntry(eb.startStrList(
-                        localized("option", "mc.thirdRowStrings"), options.thirdRowStrings)
-                .setTooltip(localized("option", "mc.thirdRowStrings.tooltip"))
-                .setDefaultValue(Config.Options.thirdRowStringsDefault)
-                .setSaveConsumer(val -> options.thirdRowStrings = val)
-                .setInsertInFront(false)
-                .setExpanded(true)
-                .build());
-
-        mc.addEntry(eb.startStrList(
-                        localized("option", "mc.fourthRowStrings"), options.fourthRowStrings)
-                .setTooltip(localized("option", "mc.fourthRowStrings.tooltip"))
-                .setDefaultValue(Config.Options.fourthRowStringsDefault)
-                .setSaveConsumer(val -> options.fourthRowStrings = val)
-                .setInsertInFront(false)
-                .setExpanded(true)
-                .build());
-
-        ConfigCategory fb = builder.getOrCreateCategory(localized("option", "fb"));
-
-        fb.addEntry(eb.startStrList(
-                        localized("option", "fb.firstButtonKeys"), options.firstButtonKeys)
-                .setTooltip(localized("option", "fb.firstButtonKeys.tooltip"))
-                .setDefaultValue(Config.Options.firstButtonKeysDefault)
-                .setSaveConsumer(val -> options.firstButtonKeys = val)
-                .setInsertInFront(false)
-                .setExpanded(true)
-                .build());
-
-        fb.addEntry(eb.startStrList(
-                        localized("option", "fb.secondButtonKeys"), options.secondButtonKeys)
-                .setTooltip(localized("option", "fb.secondButtonKeys.tooltip"))
-                .setDefaultValue(Config.Options.secondButtonKeysDefault)
-                .setSaveConsumer(val -> options.secondButtonKeys = val)
-                .setInsertInFront(false)
-                .setExpanded(true)
-                .build());
-
-        fb.addEntry(eb.startStrList(
-                        localized("option", "fb.thirdButtonKeys"), options.thirdButtonKeys)
-                .setTooltip(localized("option", "fb.thirdButtonKeys.tooltip"))
-                .setDefaultValue(Config.Options.thirdButtonKeysDefault)
-                .setSaveConsumer(val -> options.thirdButtonKeys = val)
-                .setInsertInFront(false)
-                .setExpanded(true)
-                .build());
-
-        fb.addEntry(eb.startStrList(
-                        localized("option", "fb.firstButtonStrings"), options.firstButtonStrings)
-                .setTooltip(localized("option", "fb.firstButtonStrings.tooltip"))
-                .setDefaultValue(Config.Options.firstButtonStringsDefault)
-                .setSaveConsumer(val -> options.firstButtonStrings = val)
-                .setInsertInFront(false)
-                .setExpanded(true)
-                .build());
-
-        fb.addEntry(eb.startStrList(
-                        localized("option", "fb.secondButtonStrings"), options.secondButtonStrings)
-                .setTooltip(localized("option", "fb.secondButtonStrings.tooltip"))
-                .setDefaultValue(Config.Options.secondButtonStringsDefault)
-                .setSaveConsumer(val -> options.secondButtonStrings = val)
-                .setInsertInFront(false)
-                .setExpanded(true)
-                .build());
-
-        fb.addEntry(eb.startStrList(
-                        localized("option", "fb.thirdButtonStrings"), options.thirdButtonStrings)
-                .setTooltip(localized("option", "fb.thirdButtonStrings.tooltip"))
-                .setDefaultValue(Config.Options.thirdButtonStringsDefault)
-                .setSaveConsumer(val -> options.thirdButtonStrings = val)
-                .setInsertInFront(false)
-                .setExpanded(true)
+        mc.addEntry(eb.startBooleanToggle(
+                localized("option", "mc.modmenuIconTop"), options.modmenuIconTop)
+                .setTooltip(localized("option", "mc.modmenuIconTop.tooltip"))
+                .setDefaultValue(Config.Options.modmenuIconTopDefault)
+                .setSaveConsumer(val -> options.modmenuIconTop = val)
                 .build());
 
         return builder.build();

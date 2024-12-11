@@ -17,6 +17,9 @@ dependencies {
     // JiJ MixinExtras if required to be newer than minimum loader-provided version
 //    include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:${mixinextras_version}")))
     
+    // MixinSquared
+    include(implementation(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-fabric:${mixinsquared_version}")))
+    
     // Modmenu
     modImplementation("maven.modrinth:mOgUt4GM:${modmenu_version}")
     

@@ -19,7 +19,7 @@ package dev.terminalmc.flashside.mixin;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.mojang.datafixers.util.Pair;
-import com.moulberry.flashback.screen.BottomTextWidget;
+import dev.terminalmc.flashside.Flashside;
 import dev.terminalmc.flashside.config.Config;
 import dev.terminalmc.flashside.gui.widget.FlashsideButton;
 import dev.terminalmc.flashside.mixin.accessor.ButtonAccessor;
@@ -32,21 +32,37 @@ import net.minecraft.client.gui.layouts.LayoutElement;
 import net.minecraft.client.gui.screens.PauseScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.contents.PlainTextContents;
-import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Iterator;
 import java.util.function.Consumer;
 
 @Mixin(PauseScreen.class)
 public class MixinPauseScreen extends Screen {
+    @Shadow
+    @Final
+    private static int BUTTON_PADDING;
+
     protected MixinPauseScreen(Component title) {
         super(title);
+    }
+    
+    @Inject(
+            method = "createPauseMenu",
+            at = @At("HEAD")
+    )
+    private void onCreatePauseMenu(CallbackInfo ci) {
+        Flashside.fbButton1 = null;
+        Flashside.fbButton2 = null;
+        Flashside.fbButton3 = null;
+        Flashside.mmButton = null;
     }
     
     @WrapOperation(
@@ -58,70 +74,48 @@ public class MixinPauseScreen extends Screen {
     )
     private void wrapVisitWidgets(GridLayout grid, Consumer<AbstractWidget> consumer, 
                                       Operation<Void> original) {
-        if (grid == null) return;
+        if (grid != null) {
+            Button referenceButton = null;
+            for (LayoutElement element : ((GridLayoutAccessor) grid).getChildren()) {
+                if (element instanceof Button button) {
+                    referenceButton = button;
+                    break;
+                }
+            }
+            if (referenceButton != null) {
+                int bHeight = referenceButton.getHeight();
+                int rowHeight = bHeight + BUTTON_PADDING;
 
-        Button mcb1 = null;
-        Button mcb2 = null;
-        Button mcb3 = null;
+                int x = this.width / 2 + 4 + 100 + 2;
+                int y = referenceButton.getY() + (rowHeight * Config.options().startRow);
+                
+                boolean mmButtonPlaced = false;
+                if (Flashside.mmButton != null && Config.options().modmenuIconTop) {
+                    Flashside.mmButton.setX(x);
+                    Flashside.mmButton.setY(y);
+                    this.addRenderableWidget(Flashside.mmButton);
+                    y += rowHeight;
+                    mmButtonPlaced = true;
+                }
 
-        Iterator<LayoutElement> elementIter = ((GridLayoutAccessor)grid).getChildren().iterator();
-        Iterator<GridLayout.CellInhabitant> inhabitantIter = ((GridLayoutAccessor)grid).getCellInhabitants().iterator();
-        while (elementIter.hasNext() && inhabitantIter.hasNext()) {
-            LayoutElement element = elementIter.next();
-            inhabitantIter.next();
-            
-            boolean remove = false;
-            if (element instanceof Button button) {
-                Config.Options options = Config.options();
-                String text = button.getMessage().getString();
-                if (button.getMessage().getContents() instanceof TranslatableContents contents) {
-                    if (options.secondRowKeys.contains(contents.getKey())
-                            || options.secondRowStrings.contains(text)) {
-                        mcb1 = button;
-                    } else if (options.thirdRowKeys.contains(contents.getKey())
-                            || options.thirdRowStrings.contains(text)) {
-                        mcb2 = button;
-                    } else if (options.fourthRowKeys.contains(contents.getKey())
-                            || options.fourthRowStrings.contains(text)) {
-                        mcb3 = button;
-                    } else if (mcb1 != null && (options.firstButtonKeys.contains(contents.getKey())
-                            || options.firstButtonStrings.contains(text))) {
-                        this.addRenderableWidget(getFlashsideButton(button, mcb1));
-                        remove = true;
-                    } else if (mcb2 != null && (options.secondButtonKeys.contains(contents.getKey())
-                            || options.secondButtonStrings.contains(text))) {
-                        this.addRenderableWidget(getFlashsideButton(button, mcb2));
-                        remove = true;
-                    } else if (mcb3 != null && (options.thirdButtonKeys.contains(contents.getKey())
-                            || options.thirdButtonStrings.contains(text))) {
-                        this.addRenderableWidget(getFlashsideButton(button, mcb3));
-                        remove = true;
-                    }
-                } else if (button.getMessage().getContents() instanceof PlainTextContents.LiteralContents contents) {
-                    if (options.secondRowStrings.contains(contents.text())) {
-                        mcb1 = button;
-                    } else if (options.thirdRowStrings.contains(contents.text())) {
-                        mcb2 = button;
-                    } else if (options.fourthRowStrings.contains(contents.text())) {
-                        mcb3 = button;
-                    } else if (mcb1 != null && options.firstButtonStrings.contains(contents.text())) {
-                        this.addRenderableWidget(getFlashsideButton(button, mcb1));
-                        remove = true;
-                    } else if (mcb2 != null && options.secondButtonStrings.contains(contents.text())) {
-                        this.addRenderableWidget(getFlashsideButton(button, mcb2));
-                        remove = true;
-                    } else if (mcb3 != null && options.thirdButtonStrings.contains(contents.text())) {
-                        this.addRenderableWidget(getFlashsideButton(button, mcb3));
-                        remove = true;
+                if (Flashside.fbButton1 != null) {
+                    this.addRenderableWidget(getFlashsideButton(x, y, bHeight, Flashside.fbButton1));
+                    y += rowHeight;
+                    if (Flashside.fbButton2 != null) {
+                        this.addRenderableWidget(getFlashsideButton(x, y, bHeight, Flashside.fbButton2));
+                        y += rowHeight;
+                        if (Flashside.fbButton3 != null) {
+                            this.addRenderableWidget(getFlashsideButton(x, y, bHeight, Flashside.fbButton3));
+                            y += rowHeight;
+                        }
                     }
                 }
-            } else if (element instanceof BottomTextWidget) {
-                remove = true;
-            }
-            
-            if (remove) {
-                elementIter.remove();
-                inhabitantIter.remove();
+                
+                if (Flashside.mmButton != null && !mmButtonPlaced) {
+                    Flashside.mmButton.setX(x);
+                    Flashside.mmButton.setY(y);
+                    this.addRenderableWidget(Flashside.mmButton);
+                }
             }
         }
         
@@ -129,15 +123,9 @@ public class MixinPauseScreen extends Screen {
     }
 
     @Unique
-    private static @NotNull FlashsideButton getFlashsideButton(Button original, Button ref) {
-        FlashsideButton fsb = new FlashsideButton(
-                ref.getX() + ref.getWidth() + 5,
-                ref.getY(),
-                ref.getHeight(),
-                ref.getHeight(),
-                Component.empty(),
-                ((ButtonAccessor) original).getOnPress(),
-                getButtonInfo(original.getMessage().getString())
+    private static @NotNull FlashsideButton getFlashsideButton(int x, int y, int height, Button original) {
+        FlashsideButton fsb = new FlashsideButton(x, y, height, height, Component.empty(),
+                ((ButtonAccessor) original).getOnPress(), getButtonInfo(original.getMessage().getString())
         );
         fsb.setTooltip(Tooltip.create(original.getMessage()));
         return fsb;
@@ -146,11 +134,11 @@ public class MixinPauseScreen extends Screen {
     @Unique
     private static Pair<ResourceLocation,String> getButtonInfo(String text) {
         return switch(text) {
-            case "Start Recording" -> new Pair<>(FlashsideButton.OVERLAY_START, text);
-            case "Finish Recording" -> new Pair<>(FlashsideButton.OVERLAY_FINISH, text);
-            case "Pause Recording" -> new Pair<>(FlashsideButton.OVERLAY_PAUSE, text);
-            case "Unpause Recording" -> new Pair<>(FlashsideButton.OVERLAY_UNPAUSE, text);
-            case "Cancel Recording" -> new Pair<>(FlashsideButton.OVERLAY_CANCEL, text);
+            case Flashside.startString -> new Pair<>(FlashsideButton.OVERLAY_START, text);
+            case Flashside.finishString -> new Pair<>(FlashsideButton.OVERLAY_FINISH, text);
+            case Flashside.pauseString -> new Pair<>(FlashsideButton.OVERLAY_PAUSE, text);
+            case Flashside.unpauseString -> new Pair<>(FlashsideButton.OVERLAY_UNPAUSE, text);
+            case Flashside.cancelString -> new Pair<>(FlashsideButton.OVERLAY_CANCEL, text);
             default -> new Pair<>(FlashsideButton.OVERLAY_UNKNOWN, "Unknown Function");
         };
     }
