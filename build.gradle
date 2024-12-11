@@ -6,8 +6,6 @@ plugins {
     id("org.ajoberstar.grgit.service") version("${grgitservice_version}")
 }
 
-
-
 subprojects {
     version = mod_version
     group = mod_group
