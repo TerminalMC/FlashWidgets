@@ -40,6 +40,20 @@ public class ClothScreenProvider {
         ConfigEntryBuilder eb = builder.entryBuilder();
         
         ConfigCategory mc = builder.getOrCreateCategory(localized("option", "mc"));
+        
+        mc.addEntry(eb.startBooleanToggle(
+                localized("option", "mc.leftSide"), options.leftSide)
+                .setTooltip(localized("option", "mc.leftSide.tooltip"))
+                .setDefaultValue(Config.Options.leftSideDefault)
+                .setSaveConsumer(val -> options.leftSide = val)
+                .build());
+
+        mc.addEntry(eb.startBooleanToggle(
+                        localized("option", "mc.editTitleScreen"), options.editTitleScreen)
+                .setTooltip(localized("option", "mc.editTitleScreen.tooltip"))
+                .setDefaultValue(Config.Options.editTitleScreenDefault)
+                .setSaveConsumer(val -> options.editTitleScreen = val)
+                .build());
 
         mc.addEntry(eb.startIntSlider(
                 localized("option", "mc.startRow"), options.startRow, 0, 4)

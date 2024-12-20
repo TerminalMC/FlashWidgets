@@ -9,6 +9,7 @@
   "client": [
     "MixinPauseScreen",
     "flashback.MixinSquaredPauseScreen",
+    "flashback.MixinSquaredTitleScreen",
     "modmenu.MixinSquaredPauseScreen"
   ],
   "server": [

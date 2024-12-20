@@ -73,7 +73,7 @@ public class MixinPauseScreen extends Screen {
             )
     )
     private void wrapVisitWidgets(GridLayout grid, Consumer<AbstractWidget> consumer, 
-                                      Operation<Void> original) {
+                                  Operation<Void> original) {
         if (grid != null) {
             Button referenceButton = null;
             for (LayoutElement element : ((GridLayoutAccessor) grid).getChildren()) {
@@ -86,7 +86,9 @@ public class MixinPauseScreen extends Screen {
                 int bHeight = referenceButton.getHeight();
                 int rowHeight = bHeight + BUTTON_PADDING;
 
-                int x = this.width / 2 + 4 + 100 + 2;
+                int x = Config.options().leftSide 
+                        ? referenceButton.getX() - referenceButton.getHeight() - 4
+                        : referenceButton.getRight() + 4;
                 int y = referenceButton.getY() + (rowHeight * Config.options().startRow);
                 
                 boolean mmButtonPlaced = false;

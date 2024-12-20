@@ -21,6 +21,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.terraformersmc.modmenu.gui.widget.UpdateCheckerTexturedButtonWidget;
 import dev.terminalmc.flashside.Flashside;
+import dev.terminalmc.flashside.config.Config;
 import net.minecraft.client.gui.layouts.LayoutElement;
 import net.minecraft.client.gui.screens.PauseScreen;
 import org.spongepowered.asm.mixin.Mixin;
@@ -46,7 +47,10 @@ public class MixinSquaredPauseScreen {
             )
     )
     private void wrapAdd(List<LayoutElement> instance, int index, Object element, Operation<Void> original) {
-        if (element instanceof UpdateCheckerTexturedButtonWidget button) {
+        if (
+                !Config.options().leftSide 
+                && element instanceof UpdateCheckerTexturedButtonWidget button
+        ) {
             Flashside.mmButton = button;
         }
         else original.call(instance, index, element);

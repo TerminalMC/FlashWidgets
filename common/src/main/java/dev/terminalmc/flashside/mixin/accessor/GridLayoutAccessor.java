@@ -27,7 +27,4 @@ import java.util.List;
 public interface GridLayoutAccessor {
     @Accessor
     List<LayoutElement> getChildren();
-    
-    @Accessor
-    List<GridLayout.CellInhabitant> getCellInhabitants();
 }
