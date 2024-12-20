@@ -44,10 +44,10 @@ public class Config {
 
     public static class Options {
         public static final boolean leftSideDefault = false;
-        public boolean leftSide = true;
+        public boolean leftSide = leftSideDefault;
         
         public static final boolean editTitleScreenDefault = false;
-        public boolean editTitleScreen = true;
+        public boolean editTitleScreen = editTitleScreenDefault;
         
         public static final int startRowDefault = 1;
         public int startRow = startRowDefault;
