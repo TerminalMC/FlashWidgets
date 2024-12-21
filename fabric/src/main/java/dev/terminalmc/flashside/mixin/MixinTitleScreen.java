@@ -32,10 +32,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(TitleScreen.class)
 public class MixinTitleScreen {
     @Inject(
-            method = "createNormalMenuOptions",
+            method = "init",
             at = @At("HEAD")
     )
-    private void onCreateNormalMenuOptions(int y, int rowHeight, CallbackInfo ci) {
+    private void onCreateNormalMenuOptions(CallbackInfo ci) {
         Flashside.fbTitleScreenX = -1;
         Flashside.fbTitleScreenY = -1;
         Flashside.mmTitleScreenY = -1;
