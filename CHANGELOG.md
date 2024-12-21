@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.0
+
+- Added option to move Flashback button vertically on title screen
+- Added ModMenu icon button compatibility for title screen
+
 ## 0.3.0
 
 - Added option to place buttons on left side

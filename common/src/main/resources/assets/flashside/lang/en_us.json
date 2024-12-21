@@ -6,15 +6,22 @@
 
   "message.flashside.viewModrinth": "View on Modrinth",
   "message.flashside.installCloth": "Install Cloth Config API to access mod options",
+
+  "option.flashside.common": "Common Options",
+  "option.flashside.common.leftSide": "Left side",
+  "option.flashside.common.leftSide.tooltip": "Whether to place the Flashside buttons on the left, instead of the right.",
+  "option.flashside.common.modmenuIconTop": "ModMenu icon on top",
+  "option.flashside.common.modmenuIconTop.tooltip": "Whether to place the ModMenu button above the Flashside buttons.",
   
-  "option.flashside.mc": "Minecraft",
-  "option.flashside.mc.startRow": "Start row",
-  "option.flashside.mc.leftSide": "Left side",
-  "option.flashside.mc.leftSide.tooltip": "Whether to place the Flashside buttons on the left, instead of the right.",
-  "option.flashside.mc.editTitleScreen": "Edit title screen",
-  "option.flashside.mc.editTitleScreen.tooltip": "Whether to, when in 'Left side' mode, move the Flashback button on the title screen.",
-  "option.flashside.mc.startRow.tooltip": "Where the Flashside buttons will start (0 for the top row).",
-  "option.flashside.mc.startRow.value": "Row %d",
-  "option.flashside.mc.modmenuIconTop": "ModMenu icon on top",
-  "option.flashside.mc.modmenuIconTop.tooltip": "Whether to place the ModMenu button above the Flashside buttons."
+  "option.flashside.pause": "Pause Screen Options",
+  "option.flashside.pause.startRow": "Start row",
+  "option.flashside.pause.startRow.tooltip": "Where the Flashside buttons will start (0 for the top row).",
+  "option.flashside.pause.startRow.value": "Row %d",
+
+  "option.flashside.title": "Title Screen Options",
+  "option.flashside.title.editTitleScreen": "Edit title screen",
+  "option.flashside.title.editTitleScreen.tooltip": "Whether to allow moving the Flashback button on the title screen.",
+  "option.flashside.title.startRowTitleScreen": "Start row",
+  "option.flashside.title.startRowTitleScreen.tooltip": "Where the Flashside buttons will start (0 for the top row).",
+  "option.flashside.title.startRowTitleScreen.value": "Row %d"
 }

@@ -39,35 +39,47 @@ public class ClothScreenProvider {
                 .setSavingRunnable(Config::save);
         ConfigEntryBuilder eb = builder.entryBuilder();
         
-        ConfigCategory mc = builder.getOrCreateCategory(localized("option", "mc"));
-        
-        mc.addEntry(eb.startBooleanToggle(
-                localized("option", "mc.leftSide"), options.leftSide)
-                .setTooltip(localized("option", "mc.leftSide.tooltip"))
+        ConfigCategory common = builder.getOrCreateCategory(localized("option", "common"));
+
+        common.addEntry(eb.startBooleanToggle(
+                        localized("option", "common.leftSide"), options.leftSide)
+                .setTooltip(localized("option", "common.leftSide.tooltip"))
                 .setDefaultValue(Config.Options.leftSideDefault)
                 .setSaveConsumer(val -> options.leftSide = val)
                 .build());
+        
+        common.addEntry(eb.startBooleanToggle(
+                        localized("option", "common.modmenuIconTop"), options.modmenuIconTop)
+                .setTooltip(localized("option", "common.modmenuIconTop.tooltip"))
+                .setDefaultValue(Config.Options.modmenuIconTopDefault)
+                .setSaveConsumer(val -> options.modmenuIconTop = val)
+                .build());
+        
+        ConfigCategory pause = builder.getOrCreateCategory(localized("option", "pause"));
+        
+        pause.addEntry(eb.startIntSlider(
+                localized("option", "pause.startRow"), options.startRow, 0, 4)
+                .setTooltip(localized("option", "pause.startRow.tooltip"))
+                .setDefaultValue(Config.Options.startRowDefault)
+                .setSaveConsumer(val -> options.startRow = val)
+                .setTextGetter(val -> localized("option", "pause.startRow.value", val)) // op
+                .build());
 
-        mc.addEntry(eb.startBooleanToggle(
-                        localized("option", "mc.editTitleScreen"), options.editTitleScreen)
-                .setTooltip(localized("option", "mc.editTitleScreen.tooltip"))
+        ConfigCategory title = builder.getOrCreateCategory(localized("option", "title"));
+        
+        title.addEntry(eb.startBooleanToggle(
+                        localized("option", "title.editTitleScreen"), options.editTitleScreen)
+                .setTooltip(localized("option", "title.editTitleScreen.tooltip"))
                 .setDefaultValue(Config.Options.editTitleScreenDefault)
                 .setSaveConsumer(val -> options.editTitleScreen = val)
                 .build());
 
-        mc.addEntry(eb.startIntSlider(
-                localized("option", "mc.startRow"), options.startRow, 0, 4)
-                .setTooltip(localized("option", "mc.startRow.tooltip"))
-                .setDefaultValue(Config.Options.startRowDefault)
-                .setSaveConsumer(val -> options.startRow = val)
-                .setTextGetter(val -> localized("option", "mc.startRow.value", val)) // op
-                .build());
-
-        mc.addEntry(eb.startBooleanToggle(
-                localized("option", "mc.modmenuIconTop"), options.modmenuIconTop)
-                .setTooltip(localized("option", "mc.modmenuIconTop.tooltip"))
-                .setDefaultValue(Config.Options.modmenuIconTopDefault)
-                .setSaveConsumer(val -> options.modmenuIconTop = val)
+        title.addEntry(eb.startIntSlider(
+                        localized("option", "title.startRowTitleScreen"), options.startRowTitleScreen, 0, 4)
+                .setTooltip(localized("option", "title.startRowTitleScreen.tooltip"))
+                .setDefaultValue(Config.Options.startRowTitleScreenDefault)
+                .setSaveConsumer(val -> options.startRowTitleScreen = val)
+                .setTextGetter(val -> localized("option", "title.startRowTitleScreen.value", val)) // op
                 .build());
 
         return builder.build();

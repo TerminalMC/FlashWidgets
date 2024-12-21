@@ -42,6 +42,11 @@ public class Flashside {
     public static @Nullable Button fbButton2 = null;
     public static @Nullable Button fbButton3 = null;
     public static @Nullable Button mmButton = null;
+    
+    public static int fbTitleScreenX = -1;
+    public static int fbTitleScreenY = -1;
+    public static int mmTitleScreenY = -1;
+    public static boolean mmTitleScreenIcon = false;
 
     public static void init() {
         Config.getAndSave();

@@ -19,10 +19,8 @@ package dev.terminalmc.flashside.mixin.flashback;
 import com.bawnorton.mixinsquared.TargetHandler;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import com.llamalad7.mixinextras.sugar.Local;
 import com.moulberry.flashback.screen.FlashbackButton;
-import dev.terminalmc.flashside.config.Config;
-import net.minecraft.client.gui.components.AbstractWidget;
+import dev.terminalmc.flashside.Flashside;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.network.chat.Component;
@@ -32,7 +30,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(value = TitleScreen.class, priority = 1400)
 public class MixinSquaredTitleScreen {
     /**
-     * Optionally shift the Flashback button to the left side of the game menu.
+     * Optionally reposition the Flashback button.
      */
     @TargetHandler(
             mixin = "com.moulberry.flashback.mixin.ui.MixinTitleScreen",
@@ -42,16 +40,14 @@ public class MixinSquaredTitleScreen {
             method = "@MixinSquared:Handler",
             at = @At(
                     value = "NEW",
-                    target = "com/moulberry/flashback/screen/FlashbackButton"
+                    target = "(IIIILnet/minecraft/network/chat/Component;Lnet/minecraft/client/gui/components/Button$OnPress;)Lcom/moulberry/flashback/screen/FlashbackButton;"
             )
     )
-    private FlashbackButton wrapInitFlashbackButton(int x, int y, int width, int height,
-                                                    Component component, Button.OnPress onPress,
-                                                    Operation<FlashbackButton> original, 
-                                                    @Local AbstractWidget widget) {
-        if (Config.options().leftSide && Config.options().editTitleScreen) {
-            x = widget.getX() - width - 4;
-        }
+    private FlashbackButton wrapConstructFlashbackButton(int x, int y, int width, int height, 
+                                                         Component component, Button.OnPress onPress, 
+                                                         Operation<FlashbackButton> original) {
+        if (Flashside.fbTitleScreenX != -1) x = Flashside.fbTitleScreenX;
+        if (Flashside.fbTitleScreenY != -1) y = Flashside.fbTitleScreenY;
         return original.call(x, y, width, height, component, onPress);
     }
 }

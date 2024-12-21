@@ -43,17 +43,26 @@ public class Config {
     }
 
     public static class Options {
+        // Common
+
         public static final boolean leftSideDefault = false;
         public boolean leftSide = leftSideDefault;
-        
-        public static final boolean editTitleScreenDefault = false;
-        public boolean editTitleScreen = editTitleScreenDefault;
-        
-        public static final int startRowDefault = 1;
-        public int startRow = startRowDefault;
 
         public static final boolean modmenuIconTopDefault = false;
         public boolean modmenuIconTop = modmenuIconTopDefault;
+        
+        // Pause menu options
+        
+        public static final int startRowDefault = 1;
+        public int startRow = startRowDefault;
+        
+        // Title screen options
+
+        public static final boolean editTitleScreenDefault = false;
+        public boolean editTitleScreen = editTitleScreenDefault;
+
+        public static final int startRowTitleScreenDefault = 1;
+        public int startRowTitleScreen = startRowTitleScreenDefault;
     }
 
     // Instance management
