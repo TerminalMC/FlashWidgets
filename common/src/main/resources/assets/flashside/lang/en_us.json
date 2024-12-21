@@ -18,7 +18,7 @@
   "option.flashside.pause.startRow.tooltip": "Where the Flashside buttons will start (0 for the top row).",
   "option.flashside.pause.startRow.value": "Row %d",
 
-  "option.flashside.title": "Title Screen Options",
+  "option.flashside.title": "Title Screen Options (Unsupported)",
   "option.flashside.title.editTitleScreen": "Edit title screen",
   "option.flashside.title.editTitleScreen.tooltip": "Whether to allow moving the Flashback button on the title screen.",
   "option.flashside.title.startRowTitleScreen": "Start row",
